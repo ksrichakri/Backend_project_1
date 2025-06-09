@@ -19,11 +19,14 @@ cloudinary.config({
         
     } catch (error) {
         fs.unlinkSync(localFilePath) // removes the temp file when the upload operation fails
+        return null
     }
      }
-await cloudinary.uploader
+
+     export {uploadOnCloudinary}
+/*await cloudinary.uploader
        .upload(
            'https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg', {
                public_id: 'shoes',
            }
-       )
+       )*/

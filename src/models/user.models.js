@@ -48,7 +48,7 @@ refreshToken:{
 userSchema.pre("save",async function(next) {
     if(!this.isModified("password")) return next(); // Ensures password gets saved only when changed
 
-    this.password = bcrypt.hash(this.password, 10) // Used for encrypting password
+    this.password = await bcrypt.hash(this.password, 10) // Used for encrypting password
     next()
 })
 
