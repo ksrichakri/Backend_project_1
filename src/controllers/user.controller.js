@@ -36,7 +36,11 @@ const registerUser= asyncHandler(async (req,res)=>{
     
     const avatarLocalPath = req.files?.avatar[0].path
 
-    const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    // const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    let coverImageLocalPath;
+    if(req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length >0 ){
+        coverImageLocalPath = req.files.coverImage[0].path
+    }
     
     if(!avatarLocalPath){
         throw new ApiError(400 , "Avatar file is required")
@@ -50,12 +54,12 @@ const registerUser= asyncHandler(async (req,res)=>{
     }
 
    const user = await User.create({ // Creates an entry in the database
-        fullname,
+        fullName,
         avatar:avatar.url,
         coverImage: coverImage?.url || "", // As coverimage is not a required field we check for it's existence
         email,
         password,
-        username: username.toLowerCase()
+        username: username.toLowerCase(),
 
     })
 

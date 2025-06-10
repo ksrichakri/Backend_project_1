@@ -43,7 +43,7 @@ required:[true,"Password is required"]
 refreshToken:{
     type:String
 }
-},{timeseries:true})
+},{timestamps:true})
 
 userSchema.pre("save",async function(next) {
     if(!this.isModified("password")) return next(); // Ensures password gets saved only when changed
