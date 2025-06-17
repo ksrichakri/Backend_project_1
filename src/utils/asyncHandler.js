@@ -4,6 +4,7 @@ const asyncHandler = (requestHandler) => {return(req,res,next) =>{
 }
 }
 
+
 export {asyncHandler}
 
 // const asyncHandler = (func) => async(req,res,next)=>{
